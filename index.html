@@ -79,7 +79,28 @@ g12d:{en:"Find the matching symbol between two cards",ru:"Найдите оди�
 g12desc:{en:"Two cards will appear, each with several symbols. Find the ONE symbol that appears on BOTH cards as fast as you can!",ru:"Появятся две карточки с символами. Найдите ОДИН символ, который есть на ОБЕИХ карточках, как можно быстрее!",pt:"Duas cartas aparecerão, cada uma com vários símbolos. Encontre o ÚNICO símbolo que aparece nas DUAS cartas o mais rápido possível!"},
 g12tip:{en:"Scan one card first, then look for each symbol on the other card",ru:"Сначала изучите одну карточку, потом ищите каждый символ на другой",pt:"Examine uma carta primeiro, depois procure cada símbolo na outra"},
 spotPrompt:{en:"Tap the matching symbol!",ru:"Нажмите на одинаковый символ!",pt:"Toque no símbolo igual!"},
-wrong:{en:"Wrong",ru:"Неверно",pt:"Errado"}};
+wrong:{en:"Wrong",ru:"Неверно",pt:"Errado"},
+catMemory:{en:"Memory",ru:"Память",pt:"Memória"},
+catSpeed:{en:"Speed & Focus",ru:"Скорость",pt:"Velocidade & Foco"},
+catLang:{en:"Language",ru:"Язык",pt:"Linguagem"},
+catReason:{en:"Reasoning",ru:"Логика",pt:"Raciocínio"},
+played:{en:"played",ru:"сыграно",pt:"jogados"},
+g13t:{en:"Word Cross",ru:"Кроссворд",pt:"Palavra Cruzada"},
+g13s:{en:"Verbal Reasoning",ru:"Словесное мышление",pt:"Raciocínio Verbal"},
+g13d:{en:"Find all hidden words from the given letters",ru:"Найдите все слова из данных букв",pt:"Encontre todas as palavras com as letras dadas"},
+g13desc:{en:"Use the given letters to form words that fit in the crossword grid. Type a word and press Add. Find all the words to complete the puzzle!",ru:"Используйте данные буквы, чтобы составить слова. Введите слово и нажмите Добавить!",pt:"Use as letras para formar palavras que encaixam na grade. Digite e pressione Adicionar!"},
+g13tip:{en:"Start with short words and look at the grid shape for clues",ru:"Начните с коротких слов",pt:"Comece com palavras curtas e observe o formato da grade"},
+alreadyFound:{en:"Already found!",ru:"Уже найдено!",pt:"Já encontrada!"},
+notInPuzzle:{en:"Not in this puzzle",ru:"Нет в этом кроссворде",pt:"Não está neste puzzle"},
+g13t:{en:"One Line",ru:"Одна Линия",pt:"Uma Linha"},
+g13s:{en:"Spatial Planning",ru:"Пространственное мышление",pt:"Planejamento Espacial"},
+g13d:{en:"Trace the shape without lifting or retracing",ru:"Обведите фигуру не отрывая пальца",pt:"Trace a forma sem levantar ou refazer"},
+g13desc:{en:"Tap the dots to trace every line in the shape. You must visit every connection exactly once without retracing!",ru:"Нажимайте на точки, чтобы обвести каждую линию. Нельзя повторять!",pt:"Toque nos pontos para traçar cada linha. Não pode repetir!"},
+g13tip:{en:"Plan your route before starting — look for nodes with odd connections",ru:"Спланируйте маршрут перед началом",pt:"Planeje sua rota antes de começar"},
+drawPrompt:{en:"Tap dots to draw the path",ru:"Нажимайте на точки",pt:"Toque nos pontos para traçar"},
+cantDraw:{en:"Can’t go there!",ru:"Нельзя!",pt:"Não pode ir aí!"},
+complete:{en:"Complete!",ru:"Готово!",pt:"Completo!"},
+restart:{en:"Restart",ru:"Заново",pt:"Recomeçar"}};
 const C={bg:"#FAF8F5",bgW:"#F5F0EB",card:"#FFFFFF",pri:"#1B5E3B",priL:"#2E7D32",priP:"#E8F5E9",acc:"#D4552A",accL:"#FF8A65",txt:"#1A1A2E",txM:"#555",txL:"#888",bdr:"#E0D8CF",shd:"rgba(0,0,0,.06)",suc:"#2E7D32",wrn:"#E65100",blu:"#1565C0",bluL:"#42A5F5",pur:"#6A1B9A",teal:"#00796B"};
 const FT="'Nunito','Segoe UI',system-ui,sans-serif";
 
@@ -457,19 +478,19 @@ const STORIES={en:[
 var DIFF_LEVELS=[{key:"Gentle",level:1,emoji:"🌱",color:"#86EFAC",bg:"#ECFDF5"},{key:"Balanced",level:2,emoji:"⚖️",color:"#7DD3FC",bg:"#EFF6FF"},{key:"Challenge",level:3,emoji:"⚡",color:"#C4B5FD",bg:"#F5F3FF"},{key:"Intense",level:4,emoji:"🔥",color:"#FCA5A5",bg:"#FEF2F2"}];
 var DiffPicker=function(props){
 var L=props.lang||"en",onPick=props.onPick;
-return React.createElement("div",{className:"fade-in",style:{minHeight:"100vh",background:C.bg,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",padding:"32px 20px",fontFamily:FT}},
+return React.createElement("div",{className:"fade-in",style:{minHeight:"100vh",background:"#1A2332",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",padding:"32px 20px",fontFamily:FT}},
 React.createElement("div",{style:{fontSize:48,marginBottom:12}},"🧠"),
-React.createElement("h1",{style:{fontSize:28,fontWeight:800,color:C.txt,textAlign:"center",marginBottom:8,fontFamily:"'DM Serif Display',Georgia,serif"}},t("diffTitle",L)),
-React.createElement("p",{style:{fontSize:15,color:C.txL,textAlign:"center",marginBottom:32,maxWidth:400}},t("diffSub",L)),
+React.createElement("h1",{style:{fontSize:28,fontWeight:800,color:"#fff",textAlign:"center",marginBottom:8,fontFamily:"'DM Serif Display',Georgia,serif"}},t("diffTitle",L)),
+React.createElement("p",{style:{fontSize:15,color:"rgba(255,255,255,0.6)",textAlign:"center",marginBottom:32,maxWidth:400}},t("diffSub",L)),
 React.createElement("div",{style:{display:"flex",flexDirection:"column",gap:14,width:"100%",maxWidth:420}},
 DIFF_LEVELS.map(function(dl){
 return React.createElement("button",{key:dl.key,onClick:function(){onPick(dl.level)},style:{display:"flex",alignItems:"center",gap:16,padding:"16px 20px",background:dl.bg,border:"2px solid "+dl.color+"66",borderRadius:20,cursor:"pointer",textAlign:"left",fontFamily:FT,boxShadow:"0 2px 8px rgba(0,0,0,0.04)"}},
 React.createElement("span",{style:{fontSize:36,flexShrink:0}},dl.emoji),
 React.createElement("div",{style:{flex:1}},
-React.createElement("div",{style:{fontSize:20,fontWeight:800,color:C.txt,marginBottom:2}},t("diff"+dl.key,L)),
+React.createElement("div",{style:{fontSize:20,fontWeight:800,color:"#1A2332",marginBottom:2}},t("diff"+dl.key,L)),
 React.createElement("p",{style:{fontSize:14,color:C.txM,lineHeight:1.5,margin:0}},t("diff"+dl.key+"D",L))));
 })),
-React.createElement("p",{style:{fontSize:13,color:C.txL,marginTop:24,textAlign:"center"}},"✨ "+t("diffAdapt",L)));
+React.createElement("p",{style:{fontSize:13,color:"rgba(255,255,255,0.5)",marginTop:24,textAlign:"center"}},"✨ "+t("diffAdapt",L)));
 };
 
 /* ═══ GAME 11: STORY CHAIN ═══ */
@@ -498,12 +519,54 @@ GAMES=[
 
 /* ═══ HOME SCREEN ═══ */
 const Home=({onSelect,lang,setLang,gamesPlayed,diffF,setDiff})=>{const L=lang;
-return React.createElement("div",{style:{minHeight:"100vh",background:C.bg,fontFamily:FT}},React.createElement("div",{style:{background:`linear-gradient(155deg,#0D3B22 0%,${C.pri} 30%,${C.priL} 60%,${C.bluL} 100%)`,padding:"calc(env(safe-area-inset-top, 44px) + 24px) 24px 32px",position:"relative",overflow:"hidden"}},React.createElement("div",{style:{position:"absolute",top:-40,right:-40,width:180,height:180,borderRadius:"50%",background:"rgba(255,255,255,.06)",pointerEvents:"none"}}),React.createElement("div",{style:{maxWidth:680,margin:"0 auto"}},React.createElement("div",{style:{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:18}},React.createElement("div",{style:{display:"flex",alignItems:"center",gap:12}},React.createElement("span",{style:{fontSize:28}},"🌿"),React.createElement("span",{style:{fontSize:18,fontWeight:700,color:"rgba(255,255,255,.75)",letterSpacing:2,textTransform:"uppercase"}},"MindBloom")),React.createElement("div",{style:{display:"flex",borderRadius:12,overflow:"hidden",border:"2px solid rgba(255,255,255,0.3)",position:"relative",zIndex:10}},
-["en","ru","pt"].map(function(l){return React.createElement("button",{key:l,onClick:function(){setLang(l)},style:{padding:"10px 18px",fontSize:16,fontWeight:700,background:lang===l?"rgba(255,255,255,0.25)":"transparent",color:"#fff",border:"none",cursor:"pointer",fontFamily:FT}},l==="en"?"EN":l==="ru"?"RU":"PT")}))),React.createElement("div",{onClick:function(){setDiff(0)},style:{cursor:"pointer",display:"inline-flex",alignItems:"center",gap:6,background:"rgba(255,255,255,0.15)",borderRadius:10,padding:"6px 14px",marginBottom:10}},React.createElement("span",{style:{fontSize:14}},DIFF_LEVELS[Math.max(0,Math.round(diffF)-1)]&&DIFF_LEVELS[Math.max(0,Math.round(diffF)-1)].emoji),React.createElement("span",{style:{fontSize:13,fontWeight:700,color:"rgba(255,255,255,0.9)"}},t("diffMode",L)+": "+t("diff"+(DIFF_LEVELS[Math.max(0,Math.round(diffF)-1)]&&DIFF_LEVELS[Math.max(0,Math.round(diffF)-1)].key||"Gentle"),L))),
-React.createElement("h1",{style:{fontSize:30,fontWeight:800,color:"#fff",fontFamily:"'DM Serif Display',Georgia,serif",letterSpacing:0.5,margin:"0 0 12px",lineHeight:1.3,whiteSpace:"pre-line"}},t("heroT",L)),React.createElement("p",{style:{fontSize:20,color:"rgba(255,255,255,.8)",lineHeight:1.7,maxWidth:480}},t("heroD",L)))),React.createElement("div",{style:{background:"linear-gradient(135deg,#F3E5F5,#EDE7F6)",borderBottom:"1px solid "+C.bdr,padding:"16px 28px"}},React.createElement("div",{style:{maxWidth:680,margin:"0 auto",display:"flex",alignItems:"center",gap:14}},React.createElement("span",{style:{fontSize:28,flexShrink:0}},"✨"),React.createElement("div",{style:{flex:1}},React.createElement("p",{style:{fontSize:18,color:C.txt,margin:"0 0 4px",fontStyle:"italic",lineHeight:1.5}},"“"+(QUOTES[L]||QUOTES.en)[(gamesPlayed||0)%(QUOTES[L]||QUOTES.en).length].text+"”"),React.createElement("p",{style:{fontSize:14,color:C.txL,margin:0,fontWeight:700}},"— "+(QUOTES[L]||QUOTES.en)[(gamesPlayed||0)%(QUOTES[L]||QUOTES.en).length].author)))),
-React.createElement("div",{style:{maxWidth:680,margin:"0 auto",padding:"16px 20px 48px"}},React.createElement("div",{style:{textAlign:"center",marginBottom:12}},React.createElement("p",{style:{fontSize:17,fontWeight:700,color:C.txt,margin:"0 0 8px"}},gamesPlayed>0?"🎉 "+gamesPlayed+" "+(gamesPlayed===1?(L==="ru"?"\u0438\u0433\u0440\u0430":L==="pt"?"jogo":"game"):(L==="ru"?"\u0438\u0433\u0440":L==="pt"?"jogos":"games"))+(L==="ru"?" \u0441\u044B\u0433\u0440\u0430\u043D\u043E!":L==="pt"?" jogados!":"  played!"):(L==="ru"?"👋 \u0414\u043E\u0431\u0440\u043E \u043F\u043E\u0436\u0430\u043B\u043E\u0432\u0430\u0442\u044C!":L==="pt"?"👋 Bem-vindo!":"👋 Welcome! Pick a game to start.")),gamesPlayed>0&&React.createElement("div",{style:{background:"#E0E0E0",borderRadius:8,height:8,maxWidth:320,margin:"0 auto",overflow:"hidden"}},React.createElement("div",{style:{width:Math.min(100,gamesPlayed*10)+"%",height:"100%",background:"linear-gradient(90deg,#2E7D32,#66BB6A)",borderRadius:8,transition:"width .5s ease"}}))),React.createElement("h2",{style:{fontSize:28,fontWeight:800,color:C.txt,margin:"0 0 6px",fontFamily:"'DM Serif Display',Georgia,serif"}},t("choose",L),React.createElement("div",{className:"scroll-hint",style:{display:"flex",alignItems:"center",justifyContent:"center",gap:6,marginTop:4,marginBottom:2}},React.createElement("span",{style:{fontSize:13,color:C.txL}},L==="ru"?"\u2193 Прокрутите вниз":L==="pt"?"\u2193 Role para baixo":"\u2193 Scroll down for more"))),React.createElement("p",{style:{fontSize:18,color:C.txL,margin:"0 0 12px"}},t("fewMin",L)),React.createElement("div",{style:{display:"flex",flexDirection:"column",gap:14}},GAMES.map(g=>React.createElement("button",{key:g.id,onClick:()=>onSelect(g.id),style:{background:C.card,border:"1px solid "+C.bdr,borderRadius:20,padding:"16px 22px",display:"flex",alignItems:"center",gap:18,cursor:"pointer",textAlign:"left",width:"100%",boxShadow:"0 2px 8px rgba(0,0,0,0.04),0 8px 24px rgba(27,94,59,0.06)",fontFamily:FT,borderLeft:"4px solid "+g.color,transition:"transform .2s ease,box-shadow .2s ease"}},React.createElement("div",{style:{fontSize:40,minWidth:52,textAlign:"center"}},g.emoji),React.createElement("div",{style:{flex:1}},React.createElement("h3",{style:{fontSize:22,fontWeight:800,color:C.txt,margin:"0 0 2px"}},t(g.tK,L)),React.createElement("p",{style:{fontSize:14,fontWeight:700,color:g.color,margin:"0 0 4px",textTransform:"uppercase",letterSpacing:.6}},t(g.sK,L)),React.createElement("p",{style:{fontSize:17,color:C.txM,margin:0,lineHeight:1.4}},t(g.dK,L)),React.createElement("p",{style:{fontSize:13,color:C.txL,margin:"4px 0 0",fontStyle:"italic"}},g.src)),React.createElement("span",{style:{fontSize:28,color:C.bdr}},"›"))))));};
+const cats=[
+{key:"memory",tK:"catMemory",emoji:"🧠",games:["g1","g5","g7","g11"],grad:"linear-gradient(135deg,#1B5E3B,#2E7D5A)"},
+{key:"speed",tK:"catSpeed",emoji:"⚡",games:["g2","g4","g12"],grad:"linear-gradient(135deg,#D84315,#EF6C00)"},
+{key:"language",tK:"catLang",emoji:"📝",games:["g3","g6"],grad:"linear-gradient(135deg,#00695C,#00897B)"},
+{key:"reason",tK:"catReason",emoji:"🔍",games:["g8","g9","g10"],grad:"linear-gradient(135deg,#4527A0,#7B1FA2)"}
+];
+const cardColors={"g1":["#1B5E3B","#A5D6A7"],"g2":["#D84315","#FFAB91"],"g3":["#2E7D32","#C8E6C9"],"g4":["#6A1B9A","#CE93D8"],"g5":["#1565C0","#90CAF9"],"g6":["#00695C","#80CBC4"],"g7":["#EF6C00","#FFE0B2"],"g8":["#D84315","#FFCCBC"],"g9":["#5D4037","#D7CCC8"],"g10":["#37474F","#B0BEC5"],"g11":["#6A1B9A","#E1BEE7"],"g12":["#E65100","#FFE0B2"]};
+return React.createElement("div",{style:{minHeight:"100vh",background:"#1A2332",fontFamily:FT}},
+React.createElement("div",{style:{padding:"calc(env(safe-area-inset-top, 48px) + 16px) 20px 20px",background:"linear-gradient(180deg,#1A2332 0%,#1F2B3D 100%)"}},
+React.createElement("div",{style:{maxWidth:680,margin:"0 auto"}},
+React.createElement("div",{style:{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:16}},
+React.createElement("div",{style:{display:"flex",alignItems:"center",gap:10}},
+React.createElement("span",{style:{fontSize:28}},"\uD83C\uDF3F"),
+React.createElement("span",{style:{fontSize:20,fontWeight:800,color:"#fff",letterSpacing:1}},"MindBloom")),
+React.createElement("div",{style:{display:"flex",alignItems:"center",gap:10}},
+React.createElement("div",{style:{display:"flex",borderRadius:10,overflow:"hidden",border:"2px solid rgba(255,255,255,0.2)"}},
+["en","ru","pt"].map(function(l){return React.createElement("button",{key:l,onClick:function(){setLang(l)},style:{padding:"8px 14px",fontSize:14,fontWeight:700,background:lang===l?"rgba(255,255,255,0.2)":"transparent",color:lang===l?"#fff":"rgba(255,255,255,0.5)",border:"none",cursor:"pointer",fontFamily:FT}},l.toUpperCase())})))),
+React.createElement("div",{style:{display:"flex",gap:12,marginBottom:20}},
+React.createElement("div",{onClick:function(){setDiff(0)},style:{cursor:"pointer",display:"flex",alignItems:"center",gap:8,background:"rgba(255,255,255,0.08)",borderRadius:12,padding:"8px 16px"}},
+React.createElement("span",{style:{fontSize:18}},DIFF_LEVELS[Math.max(0,Math.round(diffF)-1)]?DIFF_LEVELS[Math.max(0,Math.round(diffF)-1)].emoji:""),
+React.createElement("span",{style:{fontSize:14,fontWeight:700,color:"rgba(255,255,255,0.7)"}},t("diff"+(DIFF_LEVELS[Math.max(0,Math.round(diffF)-1)]?DIFF_LEVELS[Math.max(0,Math.round(diffF)-1)].key:"Gentle"),L))),
+React.createElement("div",{style:{display:"flex",alignItems:"center",gap:8,background:"rgba(255,255,255,0.08)",borderRadius:12,padding:"8px 16px"}},
+React.createElement("span",{style:{fontSize:18}},"\uD83C\uDFC6"),
+React.createElement("span",{style:{fontSize:14,fontWeight:700,color:"rgba(255,255,255,0.7)"}},gamesPlayed+" "+t("played",L)))),
+React.createElement("div",{style:{background:"rgba(255,255,255,0.06)",borderRadius:16,padding:"14px 18px",marginBottom:4}},
+React.createElement("p",{style:{fontSize:17,color:"rgba(255,255,255,0.75)",margin:0,fontStyle:"italic",lineHeight:1.6}},"\u201C"+(QUOTES[L]||QUOTES.en)[(gamesPlayed||0)%(QUOTES[L]||QUOTES.en).length].text+"\u201D"),
+React.createElement("p",{style:{fontSize:13,color:"rgba(255,255,255,0.4)",margin:"6px 0 0",fontWeight:700}},"\u2014 "+(QUOTES[L]||QUOTES.en)[(gamesPlayed||0)%(QUOTES[L]||QUOTES.en).length].by)))),
+React.createElement("div",{style:{padding:"12px 20px 60px",maxWidth:680,margin:"0 auto"}},
+cats.map(function(cat){
+return React.createElement("div",{key:cat.key,style:{marginBottom:28}},
+React.createElement("div",{style:{display:"flex",alignItems:"center",gap:10,marginBottom:14}},
+React.createElement("span",{style:{fontSize:22}},cat.emoji),
+React.createElement("h2",{style:{fontSize:20,fontWeight:800,color:"#fff",margin:0}},t(cat.tK,L))),
+React.createElement("div",{style:{display:"flex",gap:12,overflowX:"auto",paddingBottom:8,scrollSnapType:"x mandatory",WebkitOverflowScrolling:"touch"}},
+cat.games.map(function(gid){
+var g=GAMES.find(function(x){return x.id===gid});
+if(!g)return null;
+var cc=cardColors[gid]||["#333","#999"];
+return React.createElement("button",{key:gid,onClick:function(){onSelect(gid)},style:{flex:"0 0 auto",width:152,background:"linear-gradient(145deg,"+cc[0]+","+cc[0]+"CC)",borderRadius:20,padding:0,border:"none",cursor:"pointer",fontFamily:FT,scrollSnapAlign:"start",textAlign:"left",overflow:"hidden",boxShadow:"0 4px 16px rgba(0,0,0,0.25)"}},
+React.createElement("div",{style:{height:100,background:"linear-gradient(145deg,"+cc[0]+","+cc[0]+"AA)",display:"flex",alignItems:"center",justifyContent:"center",position:"relative",overflow:"hidden"}},
+React.createElement("div",{style:{position:"absolute",top:-20,right:-20,width:70,height:70,borderRadius:"50%",background:"rgba(255,255,255,0.08)"}}),
+React.createElement("div",{style:{position:"absolute",bottom:-15,left:-15,width:50,height:50,borderRadius:"50%",background:"rgba(255,255,255,0.05)"}}),
+React.createElement("span",{style:{fontSize:48,filter:"drop-shadow(0 2px 4px rgba(0,0,0,0.3))"}},g.emoji)),
+React.createElement("div",{style:{padding:"10px 12px 14px"}},
+React.createElement("h3",{style:{fontSize:15,fontWeight:800,color:"#fff",margin:"0 0 3px",lineHeight:1.3}},t(g.tK,L)),
+React.createElement("p",{style:{fontSize:12,color:"rgba(255,255,255,0.6)",margin:0,lineHeight:1.3}},t(g.sK,L))));
+})));})));};
 
-/* ═══ MAIN APP ═══ */
 const App=()=>{const[cur,setCur]=useState(null);const[lang,setLang]=useState("en");const[gamesPlayed,setGamesPlayed]=useState(0);const[diff,setDiff]=useState(0);const[diffF,setDiffF]=useState(0);const game=GAMES.find(g=>g.id===cur);if(game){const G=game.C;return React.createElement(LangCtx.Provider,{value:lang},React.createElement(LangSetCtx.Provider,{value:setLang},React.createElement(DiffCtx.Provider,{value:diffF},React.createElement(G,{onBack:function(completed,scorePct){if(completed===true){setGamesPlayed(function(g){var next=g+1;return next;});if(typeof scorePct==="number"){setDiffF(function(d){return adaptDiff(d,scorePct);});}}setCur(null)}}))));}if(!diff){return React.createElement(LangCtx.Provider,{value:lang},React.createElement(LangSetCtx.Provider,{value:setLang},React.createElement(DiffPicker,{lang:lang,onPick:function(lv){setDiff(lv);setDiffF(lv)}})));}return React.createElement(LangCtx.Provider,{value:lang},React.createElement(LangSetCtx.Provider,{value:setLang},React.createElement(DiffCtx.Provider,{value:diffF},React.createElement(Home,{onSelect:setCur,lang:lang,setLang:setLang,gamesPlayed:gamesPlayed,diffF:diffF,setDiff:setDiff}))));};
 
 try{ReactDOM.createRoot(document.getElementById("root")).render(React.createElement(App))}catch(e){document.getElementById("root").innerHTML="<div style=padding:40px><h2>MindBloom</h2><p>Error: "+e.message+"</p><button onclick=location.reload()>Refresh</button></div>"}

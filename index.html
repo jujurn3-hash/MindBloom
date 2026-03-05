@@ -478,19 +478,19 @@ const STORIES={en:[
 var DIFF_LEVELS=[{key:"Gentle",level:1,emoji:"🌱",color:"#86EFAC",bg:"#ECFDF5"},{key:"Balanced",level:2,emoji:"⚖️",color:"#7DD3FC",bg:"#EFF6FF"},{key:"Challenge",level:3,emoji:"⚡",color:"#C4B5FD",bg:"#F5F3FF"},{key:"Intense",level:4,emoji:"🔥",color:"#FCA5A5",bg:"#FEF2F2"}];
 var DiffPicker=function(props){
 var L=props.lang||"en",onPick=props.onPick;
-return React.createElement("div",{className:"fade-in",style:{minHeight:"100vh",background:"#1A2332",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",padding:"32px 20px",fontFamily:FT}},
+return React.createElement("div",{className:"fade-in",style:{minHeight:"100vh",background:C.bg,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",padding:"32px 20px",fontFamily:FT}},
 React.createElement("div",{style:{fontSize:48,marginBottom:12}},"🧠"),
-React.createElement("h1",{style:{fontSize:28,fontWeight:800,color:"#fff",textAlign:"center",marginBottom:8,fontFamily:"'DM Serif Display',Georgia,serif"}},t("diffTitle",L)),
-React.createElement("p",{style:{fontSize:15,color:"rgba(255,255,255,0.6)",textAlign:"center",marginBottom:32,maxWidth:400}},t("diffSub",L)),
+React.createElement("h1",{style:{fontSize:28,fontWeight:800,color:C.txt,textAlign:"center",marginBottom:8,fontFamily:"'DM Serif Display',Georgia,serif"}},t("diffTitle",L)),
+React.createElement("p",{style:{fontSize:15,color:C.txL,textAlign:"center",marginBottom:32,maxWidth:400}},t("diffSub",L)),
 React.createElement("div",{style:{display:"flex",flexDirection:"column",gap:14,width:"100%",maxWidth:420}},
 DIFF_LEVELS.map(function(dl){
 return React.createElement("button",{key:dl.key,onClick:function(){onPick(dl.level)},style:{display:"flex",alignItems:"center",gap:16,padding:"16px 20px",background:dl.bg,border:"2px solid "+dl.color+"66",borderRadius:20,cursor:"pointer",textAlign:"left",fontFamily:FT,boxShadow:"0 2px 8px rgba(0,0,0,0.04)"}},
 React.createElement("span",{style:{fontSize:36,flexShrink:0}},dl.emoji),
 React.createElement("div",{style:{flex:1}},
-React.createElement("div",{style:{fontSize:20,fontWeight:800,color:"#1A2332",marginBottom:2}},t("diff"+dl.key,L)),
+React.createElement("div",{style:{fontSize:20,fontWeight:800,color:C.txt,marginBottom:2}},t("diff"+dl.key,L)),
 React.createElement("p",{style:{fontSize:14,color:C.txM,lineHeight:1.5,margin:0}},t("diff"+dl.key+"D",L))));
 })),
-React.createElement("p",{style:{fontSize:13,color:"rgba(255,255,255,0.5)",marginTop:24,textAlign:"center"}},"✨ "+t("diffAdapt",L)));
+React.createElement("p",{style:{fontSize:13,color:C.txL,marginTop:24,textAlign:"center"}},"✨ "+t("diffAdapt",L)));
 };
 
 /* ═══ GAME 11: STORY CHAIN ═══ */
@@ -520,51 +520,55 @@ GAMES=[
 /* ═══ HOME SCREEN ═══ */
 const Home=({onSelect,lang,setLang,gamesPlayed,diffF,setDiff})=>{const L=lang;
 const cats=[
-{key:"memory",tK:"catMemory",emoji:"🧠",games:["g1","g5","g7","g11"],grad:"linear-gradient(135deg,#1B5E3B,#2E7D5A)"},
-{key:"speed",tK:"catSpeed",emoji:"⚡",games:["g2","g4","g12"],grad:"linear-gradient(135deg,#D84315,#EF6C00)"},
-{key:"language",tK:"catLang",emoji:"📝",games:["g3","g6"],grad:"linear-gradient(135deg,#00695C,#00897B)"},
-{key:"reason",tK:"catReason",emoji:"🔍",games:["g8","g9","g10"],grad:"linear-gradient(135deg,#4527A0,#7B1FA2)"}
+{key:"memory",tK:"catMemory",emoji:"\uD83E\uDDE0",games:["g1","g5","g7","g11"],color:"#1B5E3B"},
+{key:"speed",tK:"catSpeed",emoji:"\u26A1",games:["g2","g4","g12"],color:"#D84315"},
+{key:"language",tK:"catLang",emoji:"\uD83D\uDCDD",games:["g3","g6"],color:"#00695C"},
+{key:"reason",tK:"catReason",emoji:"\uD83D\uDD0D",games:["g8","g9","g10"],color:"#4527A0"}
 ];
-const cardColors={"g1":["#1B5E3B","#A5D6A7"],"g2":["#D84315","#FFAB91"],"g3":["#2E7D32","#C8E6C9"],"g4":["#6A1B9A","#CE93D8"],"g5":["#1565C0","#90CAF9"],"g6":["#00695C","#80CBC4"],"g7":["#EF6C00","#FFE0B2"],"g8":["#D84315","#FFCCBC"],"g9":["#5D4037","#D7CCC8"],"g10":["#37474F","#B0BEC5"],"g11":["#6A1B9A","#E1BEE7"],"g12":["#E65100","#FFE0B2"]};
-return React.createElement("div",{style:{minHeight:"100vh",background:"#1A2332",fontFamily:FT}},
-React.createElement("div",{style:{padding:"calc(env(safe-area-inset-top, 48px) + 16px) 20px 20px",background:"linear-gradient(180deg,#1A2332 0%,#1F2B3D 100%)"}},
-React.createElement("div",{style:{maxWidth:680,margin:"0 auto"}},
-React.createElement("div",{style:{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:16}},
+const cardColors={"g1":["#E8F5E9","#1B5E3B"],"g2":["#FBE9E7","#D84315"],"g3":["#E8F5E9","#2E7D32"],"g4":["#F3E5F5","#6A1B9A"],"g5":["#E3F2FD","#1565C0"],"g6":["#E0F2F1","#00695C"],"g7":["#FFF3E0","#EF6C00"],"g8":["#FBE9E7","#D84315"],"g9":["#EFEBE9","#5D4037"],"g10":["#ECEFF1","#37474F"],"g11":["#F3E5F5","#6A1B9A"],"g12":["#FFF3E0","#E65100"]};
+var vw=typeof window!=="undefined"?window.innerWidth:375;
+var isWide=vw>=600;
+var cardW=isWide?170:148;
+return React.createElement("div",{style:{minHeight:"100vh",background:C.bg,fontFamily:FT}},
+React.createElement("div",{className:"shell-header",style:{background:"linear-gradient(155deg,#0D3B22 0%,"+C.pri+" 30%,"+C.priL+" 60%,#90CAF9 100%)",padding:"16px 20px 20px",position:"relative",overflow:"hidden"}},
+React.createElement("div",{style:{position:"absolute",top:-40,right:-40,width:160,height:160,borderRadius:"50%",background:"rgba(255,255,255,.07)",pointerEvents:"none"}}),
+React.createElement("div",{style:{position:"absolute",bottom:-30,left:-20,width:100,height:100,borderRadius:"50%",background:"rgba(255,255,255,.04)",pointerEvents:"none"}}),
+React.createElement("div",{style:{maxWidth:720,margin:"0 auto"}},
+React.createElement("div",{style:{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:14}},
 React.createElement("div",{style:{display:"flex",alignItems:"center",gap:10}},
-React.createElement("span",{style:{fontSize:28}},"\uD83C\uDF3F"),
-React.createElement("span",{style:{fontSize:20,fontWeight:800,color:"#fff",letterSpacing:1}},"MindBloom")),
-React.createElement("div",{style:{display:"flex",alignItems:"center",gap:10}},
-React.createElement("div",{style:{display:"flex",borderRadius:10,overflow:"hidden",border:"2px solid rgba(255,255,255,0.2)"}},
-["en","ru","pt"].map(function(l){return React.createElement("button",{key:l,onClick:function(){setLang(l)},style:{padding:"8px 14px",fontSize:14,fontWeight:700,background:lang===l?"rgba(255,255,255,0.2)":"transparent",color:lang===l?"#fff":"rgba(255,255,255,0.5)",border:"none",cursor:"pointer",fontFamily:FT}},l.toUpperCase())})))),
-React.createElement("div",{style:{display:"flex",gap:12,marginBottom:20}},
-React.createElement("div",{onClick:function(){setDiff(0)},style:{cursor:"pointer",display:"flex",alignItems:"center",gap:8,background:"rgba(255,255,255,0.08)",borderRadius:12,padding:"8px 16px"}},
-React.createElement("span",{style:{fontSize:18}},DIFF_LEVELS[Math.max(0,Math.round(diffF)-1)]?DIFF_LEVELS[Math.max(0,Math.round(diffF)-1)].emoji:""),
-React.createElement("span",{style:{fontSize:14,fontWeight:700,color:"rgba(255,255,255,0.7)"}},t("diff"+(DIFF_LEVELS[Math.max(0,Math.round(diffF)-1)]?DIFF_LEVELS[Math.max(0,Math.round(diffF)-1)].key:"Gentle"),L))),
-React.createElement("div",{style:{display:"flex",alignItems:"center",gap:8,background:"rgba(255,255,255,0.08)",borderRadius:12,padding:"8px 16px"}},
-React.createElement("span",{style:{fontSize:18}},"\uD83C\uDFC6"),
-React.createElement("span",{style:{fontSize:14,fontWeight:700,color:"rgba(255,255,255,0.7)"}},gamesPlayed+" "+t("played",L)))),
-React.createElement("div",{style:{background:"rgba(255,255,255,0.06)",borderRadius:16,padding:"14px 18px",marginBottom:4}},
-React.createElement("p",{style:{fontSize:17,color:"rgba(255,255,255,0.75)",margin:0,fontStyle:"italic",lineHeight:1.6}},"\u201C"+(QUOTES[L]||QUOTES.en)[(gamesPlayed||0)%(QUOTES[L]||QUOTES.en).length].text+"\u201D"),
-React.createElement("p",{style:{fontSize:13,color:"rgba(255,255,255,0.4)",margin:"6px 0 0",fontWeight:700}},"\u2014 "+(QUOTES[L]||QUOTES.en)[(gamesPlayed||0)%(QUOTES[L]||QUOTES.en).length].by)))),
-React.createElement("div",{style:{padding:"12px 20px 60px",maxWidth:680,margin:"0 auto"}},
+React.createElement("span",{style:{fontSize:26}},"\uD83C\uDF3F"),
+React.createElement("span",{style:{fontSize:18,fontWeight:800,color:"rgba(255,255,255,.85)",letterSpacing:1.5,textTransform:"uppercase"}},"MindBloom")),
+React.createElement("div",{style:{display:"flex",borderRadius:10,overflow:"hidden",border:"2px solid rgba(255,255,255,0.3)"}},
+["en","ru","pt"].map(function(l){return React.createElement("button",{key:l,onClick:function(){setLang(l)},style:{padding:"8px 16px",fontSize:14,fontWeight:700,background:lang===l?"rgba(255,255,255,0.25)":"transparent",color:"#fff",border:"none",cursor:"pointer",fontFamily:FT}},l.toUpperCase())}))),
+React.createElement("div",{style:{display:"flex",gap:10,marginBottom:14,flexWrap:"wrap"}},
+React.createElement("div",{onClick:function(){setDiff(0)},style:{cursor:"pointer",display:"flex",alignItems:"center",gap:6,background:"rgba(255,255,255,0.15)",borderRadius:10,padding:"6px 14px"}},
+React.createElement("span",{style:{fontSize:16}},DIFF_LEVELS[Math.max(0,Math.round(diffF)-1)]?DIFF_LEVELS[Math.max(0,Math.round(diffF)-1)].emoji:""),
+React.createElement("span",{style:{fontSize:13,fontWeight:700,color:"rgba(255,255,255,0.9)"}},t("diff"+(DIFF_LEVELS[Math.max(0,Math.round(diffF)-1)]?DIFF_LEVELS[Math.max(0,Math.round(diffF)-1)].key:"Gentle"),L))),
+React.createElement("div",{style:{display:"flex",alignItems:"center",gap:6,background:"rgba(255,255,255,0.15)",borderRadius:10,padding:"6px 14px"}},
+React.createElement("span",{style:{fontSize:16}},"\uD83C\uDFC6"),
+React.createElement("span",{style:{fontSize:13,fontWeight:700,color:"rgba(255,255,255,0.9)"}},gamesPlayed+" "+t("played",L)))),
+React.createElement("div",{style:{background:"rgba(255,255,255,0.1)",borderRadius:14,padding:"12px 16px"}},
+React.createElement("p",{style:{fontSize:16,color:"rgba(255,255,255,0.85)",margin:0,fontStyle:"italic",lineHeight:1.55}},"\u201C"+(QUOTES[L]||QUOTES.en)[(gamesPlayed||0)%(QUOTES[L]||QUOTES.en).length].text+"\u201D"),
+React.createElement("p",{style:{fontSize:12,color:"rgba(255,255,255,0.55)",margin:"4px 0 0",fontWeight:700}},"\u2014 "+(QUOTES[L]||QUOTES.en)[(gamesPlayed||0)%(QUOTES[L]||QUOTES.en).length].by)))),
+React.createElement("div",{style:{padding:"16px 16px 60px",maxWidth:720,margin:"0 auto"}},
 cats.map(function(cat){
-return React.createElement("div",{key:cat.key,style:{marginBottom:28}},
-React.createElement("div",{style:{display:"flex",alignItems:"center",gap:10,marginBottom:14}},
-React.createElement("span",{style:{fontSize:22}},cat.emoji),
-React.createElement("h2",{style:{fontSize:20,fontWeight:800,color:"#fff",margin:0}},t(cat.tK,L))),
-React.createElement("div",{style:{display:"flex",gap:12,overflowX:"auto",paddingBottom:8,scrollSnapType:"x mandatory",WebkitOverflowScrolling:"touch"}},
+return React.createElement("div",{key:cat.key,style:{marginBottom:24}},
+React.createElement("div",{style:{display:"flex",alignItems:"center",gap:8,marginBottom:12,paddingLeft:4}},
+React.createElement("span",{style:{fontSize:20}},cat.emoji),
+React.createElement("h2",{style:{fontSize:18,fontWeight:800,color:C.txt,margin:0}},t(cat.tK,L))),
+React.createElement("div",{style:{display:"flex",gap:12,overflowX:"auto",paddingBottom:6,scrollSnapType:"x mandatory",WebkitOverflowScrolling:"touch"}},
 cat.games.map(function(gid){
 var g=GAMES.find(function(x){return x.id===gid});
 if(!g)return null;
-var cc=cardColors[gid]||["#333","#999"];
-return React.createElement("button",{key:gid,onClick:function(){onSelect(gid)},style:{flex:"0 0 auto",width:152,background:"linear-gradient(145deg,"+cc[0]+","+cc[0]+"CC)",borderRadius:20,padding:0,border:"none",cursor:"pointer",fontFamily:FT,scrollSnapAlign:"start",textAlign:"left",overflow:"hidden",boxShadow:"0 4px 16px rgba(0,0,0,0.25)"}},
-React.createElement("div",{style:{height:100,background:"linear-gradient(145deg,"+cc[0]+","+cc[0]+"AA)",display:"flex",alignItems:"center",justifyContent:"center",position:"relative",overflow:"hidden"}},
-React.createElement("div",{style:{position:"absolute",top:-20,right:-20,width:70,height:70,borderRadius:"50%",background:"rgba(255,255,255,0.08)"}}),
-React.createElement("div",{style:{position:"absolute",bottom:-15,left:-15,width:50,height:50,borderRadius:"50%",background:"rgba(255,255,255,0.05)"}}),
-React.createElement("span",{style:{fontSize:48,filter:"drop-shadow(0 2px 4px rgba(0,0,0,0.3))"}},g.emoji)),
-React.createElement("div",{style:{padding:"10px 12px 14px"}},
-React.createElement("h3",{style:{fontSize:15,fontWeight:800,color:"#fff",margin:"0 0 3px",lineHeight:1.3}},t(g.tK,L)),
-React.createElement("p",{style:{fontSize:12,color:"rgba(255,255,255,0.6)",margin:0,lineHeight:1.3}},t(g.sK,L))));
+var cc=cardColors[gid]||["#F5F5F5","#666"];
+return React.createElement("button",{key:gid,onClick:function(){onSelect(gid)},style:{flex:"0 0 auto",width:cardW,background:cc[0],borderRadius:18,padding:0,border:"2px solid "+C.bdr,cursor:"pointer",fontFamily:FT,scrollSnapAlign:"start",textAlign:"left",overflow:"hidden",boxShadow:"0 2px 10px rgba(0,0,0,0.06)",transition:"transform .15s ease"}},
+React.createElement("div",{style:{height:isWide?110:90,background:"linear-gradient(145deg,"+cc[1]+"22,"+cc[1]+"11)",display:"flex",alignItems:"center",justifyContent:"center",position:"relative",overflow:"hidden"}},
+React.createElement("div",{style:{position:"absolute",top:-15,right:-15,width:60,height:60,borderRadius:"50%",background:cc[1]+"15",pointerEvents:"none"}}),
+React.createElement("div",{style:{position:"absolute",bottom:-10,left:-10,width:40,height:40,borderRadius:"50%",background:cc[1]+"10",pointerEvents:"none"}}),
+React.createElement("span",{style:{fontSize:isWide?48:40}},g.emoji)),
+React.createElement("div",{style:{padding:"10px 12px 12px"}},
+React.createElement("h3",{style:{fontSize:isWide?16:14,fontWeight:800,color:C.txt,margin:"0 0 3px",lineHeight:1.3}},t(g.tK,L)),
+React.createElement("p",{style:{fontSize:isWide?13:11,color:cc[1],margin:0,lineHeight:1.3,fontWeight:600}},t(g.sK,L))));
 })));})));};
 
 const App=()=>{const[cur,setCur]=useState(null);const[lang,setLang]=useState("en");const[gamesPlayed,setGamesPlayed]=useState(0);const[diff,setDiff]=useState(0);const[diffF,setDiffF]=useState(0);const game=GAMES.find(g=>g.id===cur);if(game){const G=game.C;return React.createElement(LangCtx.Provider,{value:lang},React.createElement(LangSetCtx.Provider,{value:setLang},React.createElement(DiffCtx.Provider,{value:diffF},React.createElement(G,{onBack:function(completed,scorePct){if(completed===true){setGamesPlayed(function(g){var next=g+1;return next;});if(typeof scorePct==="number"){setDiffF(function(d){return adaptDiff(d,scorePct);});}}setCur(null)}}))));}if(!diff){return React.createElement(LangCtx.Provider,{value:lang},React.createElement(LangSetCtx.Provider,{value:setLang},React.createElement(DiffPicker,{lang:lang,onPick:function(lv){setDiff(lv);setDiffF(lv)}})));}return React.createElement(LangCtx.Provider,{value:lang},React.createElement(LangSetCtx.Provider,{value:setLang},React.createElement(DiffCtx.Provider,{value:diffF},React.createElement(Home,{onSelect:setCur,lang:lang,setLang:setLang,gamesPlayed:gamesPlayed,diffF:diffF,setDiff:setDiff}))));};
